@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Placement Mailer</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+  <header>
+    <div class="logo">Placement Mailer</div>
+   
+  </header>
+
+  <main class="container">
+    <h2>Placement Mailer</h2>
+
+    <label class="file-label">
+      Upload Excel (.xlsx)
+      <input id="file-input" type="file" accept=".xlsx,.xls" />
+    </label>
+
+    <div class="editable-box">
+      <label>Subject:</label>
+      <div id="editable-subject" class="editable" contenteditable="true"></div>
+      <label>Body:</label>
+      <div id="editable-body" class="editable" contenteditable="true"></div>
+    </div>
+
+    <button id="send-btn">Send Emails</button>
+    <div id="status"></div>
+
+    <table id="data-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <div id="pagination">
+      <button id="prev-btn">Previous</button>
+      <span id="page-info"></span>
+      <button id="next-btn">Next</button>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

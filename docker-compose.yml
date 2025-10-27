@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  placement-mailer:
+    build: .
+    ports:
+      - "${PORT:-3000}:3000"
+    environment:
+      - EMAIL_USER=${EMAIL_USER}
+      - EMAIL_PASS=${EMAIL_PASS}
+      - EMAIL_FROM=${EMAIL_FROM}
+      - CONCURRENCY=${CONCURRENCY:-3}
+      - BATCH_DELAY_MS=${BATCH_DELAY_MS:-500}
+    restart: unless-stopped
