@@ -17,6 +17,7 @@ nav a {
   font-size: 0.95rem;
 }
 nav a:hover { text-decoration: underline; }
+
 .hamburger {
   display: none;
   font-size: 1.5rem;
@@ -36,6 +37,7 @@ nav a:hover { text-decoration: underline; }
   margin-top: 15px;
   margin-bottom: 20px;
 }
+
 .editable {
   background: #f8fafc;
   border: 1px solid #cbd5e1;
@@ -44,6 +46,9 @@ nav a:hover { text-decoration: underline; }
   min-height: 40px;
   margin-bottom: 10px;
   outline: none;
+}
+.editable.large {
+  min-height: 250px;
 }
 .editable:focus {
   background: #e0f2fe;

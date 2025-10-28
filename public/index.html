@@ -10,7 +10,7 @@
 <body>
   <header>
     <div class="logo">Placement Mailer</div>
-   
+    
   </header>
 
   <main class="container">
@@ -23,9 +23,12 @@
 
     <div class="editable-box">
       <label>Subject:</label>
-      <div id="editable-subject" class="editable" contenteditable="true"></div>
+      <div id="editable-subject" class="editable" contenteditable="true" placeholder="Enter email subject..."></div>
+
       <label>Body:</label>
-      <div id="editable-body" class="editable" contenteditable="true"></div>
+      <div id="editable-body" class="editable large" contenteditable="true" placeholder="Write your message here... (use {{Name}} for personalization)"></div>
+
+      <button id="edit-body-btn">Edit Body</button>
     </div>
 
     <button id="send-btn">Send Emails</button>

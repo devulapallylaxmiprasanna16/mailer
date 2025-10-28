@@ -7,15 +7,31 @@ const nextBtn = document.getElementById('next-btn');
 const pageInfo = document.getElementById('page-info');
 const hamburger = document.getElementById('hamburger');
 const nav = document.getElementById('nav-links');
+const editBodyBtn = document.getElementById('edit-body-btn');
+const editableBody = document.getElementById('editable-body');
 
 let parsedData = [];
 let currentPage = 1;
 const rowsPerPage = 10;
 
-// Toggle menu
+// Toggle mobile nav
 hamburger.addEventListener('click', () => nav.classList.toggle('active'));
 
-// ✅ Render table
+// Edit/Save body button
+editBodyBtn.addEventListener('click', () => {
+  const isEditing = editableBody.contentEditable === "true";
+  if (isEditing) {
+    editableBody.contentEditable = "false";
+    editBodyBtn.textContent = "Edit Body";
+    editableBody.style.background = "#f8fafc";
+  } else {
+    editableBody.contentEditable = "true";
+    editBodyBtn.textContent = "Save Body";
+    editableBody.style.background = "#e0f2fe";
+  }
+});
+
+// Render paginated table
 function renderTable() {
   tableBody.innerHTML = "";
   if (!parsedData.length) return;
@@ -39,7 +55,7 @@ function renderTable() {
   nextBtn.disabled = currentPage === Math.ceil(parsedData.length / rowsPerPage);
 }
 
-// Pagination
+// Pagination buttons
 prevBtn.addEventListener('click', () => {
   if (currentPage > 1) {
     currentPage--;
@@ -53,7 +69,7 @@ nextBtn.addEventListener('click', () => {
   }
 });
 
-// ✅ Parse Excel
+// Parse Excel file
 fileInput.addEventListener('change', (e) => {
   const f = e.target.files[0];
   if (!f) return;
@@ -70,7 +86,7 @@ fileInput.addEventListener('change', (e) => {
   reader.readAsArrayBuffer(f);
 });
 
-// ✅ Send Emails
+// Send emails
 sendBtn.addEventListener('click', async () => {
   if (!parsedData.length) {
     statusDiv.textContent = '⚠️ Please upload an Excel file first.';
@@ -78,7 +94,7 @@ sendBtn.addEventListener('click', async () => {
   }
 
   const subject = document.getElementById('editable-subject').innerText.trim();
-  const body = document.getElementById('editable-body').innerText.trim();
+  const body = editableBody.innerText.trim();
 
   if (!subject || !body) {
     statusDiv.textContent = '⚠️ Please enter subject and body.';
